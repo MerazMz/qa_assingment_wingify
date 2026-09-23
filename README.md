@@ -94,9 +94,25 @@ AI Classification Match Rate: 100.0% (10/10)
 
 ---
 
+## 📝 Design Blueprint & Engineering Notes
+
+The architecture, class designs, locators, and AI prompt engineering were systematically mapped prior to implementation:
+
+| Sheet 1: Core Foundation & Diary Locators | Sheet 2: Diary Methods & Total Locators |
+| :---: | :---: |
+| ![Page 1 - Foundation & Diary Locators](notes/page1.jpeg) | ![Page 2 - Diary Methods & Total Locators](notes/page2.jpeg) |
+| **`Logger.js`**, **`BasePage.js`**, and **`DreamsDiaryPage.js`** locators (`#dreamsDiary`, `tbody tr`). | **`DreamsDiaryPage.js`** validation logic (`getAllDreams()`, `validateDreamTypes()`, `getRecurringDreams()`) and **`DreamsTotalPage.js`** locators. |
+
+| Sheet 3: Total Methods & Home Locators | Sheet 4: Multi-Tab & AI Prompt Strategy |
+| :---: | :---: |
+| ![Page 3 - Total Methods & Home Locators](notes/page3.jpeg) | ![Page 4 - Multi-Tab & AI Validation](notes/page4.jpeg) |
+| **`DreamsTotalPage.js`** stats extraction (`getSummaryStats()`) and **`HomePage.js`** locators with ~3s loading wait. | **`clickMyDreamsAndCaptureTabs()`** dual popup handler, Groq/OpenAI fallback hierarchy, and prompt engineering. |
+
+---
+
 ## 🏛️ Architecture & Project Structure
 
-Built using **Page Object Model (POM)** for high maintainability:
+Built using **Page Object Model (POM)** for clean separation of concerns and high maintainability:
 
 ```mermaid
 flowchart LR
@@ -109,6 +125,11 @@ flowchart LR
 
 ```text
 QAWingify/
+├── notes/                        # Architectural design & planning blueprints
+│   ├── page1.jpeg                # Foundation (Logger, BasePage, Diary locators)
+│   ├── page2.jpeg                # Diary validation methods & Total page locators
+│   ├── page3.jpeg                # Total stats methods & Home page locators
+│   └── page4.jpeg                # Multi-tab listener & Groq AI prompt strategy
 ├── assets/screenshots/           # Verified test screenshots for documentation
 ├── pages/                        # Page Object Model Layer
 │   ├── BasePage.js               # Common navigation & screenshot utilities
